@@ -106,7 +106,7 @@ function efectoMovil(){
   }, 500);
 }
  
-const esMovil = window.innerWidth <= 768;
+const esMovil = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 window.addEventListener("message", (event)=>{
   if(event.data === "activar-oraculo"){
