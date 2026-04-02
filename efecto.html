@@ -63,31 +63,6 @@ for(let i=2; i<=55; i++){
   cartas.push(`${i}.jpg`)
 }
 
-let interval = null
-
-function iniciarOraculo(){
-
-  let tiempo = 3000
-  let velocidad = 80
-
-  interval = setInterval(()=>{
-    let random = Math.floor(Math.random()*cartas.length)
-    carta.src = cartas[random]
-  }, velocidad)
-
-  setTimeout(()=>{
-    clearInterval(interval)
-
-    let final = Math.floor(Math.random()*cartas.length)
-    carta.src = cartas[final]
-
-    carta.classList.remove("glow")
-    void carta.offsetWidth
-    carta.classList.add("glow")
-
-  }, tiempo)
-}
-
 function efectoMovil(){
 
   carta.style.opacity = 0;
@@ -105,17 +80,11 @@ function efectoMovil(){
 
   }, 500);
 }
- 
-const esMovil = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 window.addEventListener("message", (event)=>{
   if(event.data === "activar-oraculo"){
 
-    if(esMovil){
-      efectoMovil();
-    }else{
-      iniciarOraculo();
-    }
+  efectoMovil();
 
   }
 });
